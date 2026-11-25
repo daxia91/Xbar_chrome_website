@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Xbar — X 创作助手 · 免费 Chrome 扩展</title>
+<meta name="description" content="Xbar 是 X（Twitter）网页端创作助手：看清互关与粉丝、整理时间线、找灵感、一键出图。完全免费，数据默认只存本地。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xbar">
+<meta property="og:title" content="Xbar — X 创作助手 · 免费 Chrome 扩展">
+<meta property="og:description" content="看清互关与粉丝、整理时间线、找灵感、一键出图。完全免费，数据默认只存本地。">
+<meta property="og:image" content="assets/promo-1400x560.png">
+<meta name="theme-color" content="#061120">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/i18n.js" defer></script>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Xbar 首页">
+      <img src="assets/icon-128.png" alt="" width="30" height="30">
+      <span>Xbar</span>
+    </a>
+    <nav class="links" aria-label="主导航">
+      <a href="#features" data-i18n="nav.features">功能</a>
+      <a href="#gallery" data-i18n="nav.gallery">图鉴</a>
+      <a href="#how" data-i18n="nav.how">怎么用</a>
+      <a href="#privacy" data-i18n="nav.privacy">隐私</a>
+      <a href="#changelog" data-i18n="nav.changelog">更新</a>
+    </nav>
+    <div class="sp"></div>
+    <button class="lang" id="langToggle" type="button" aria-label="Switch language">EN</button>
+    <a class="btn small" href="https://chromewebstore.google.com/detail/fjhbelgmalhemlfjbkdpfnkgdfmhnbkb" target="_blank" rel="noopener noreferrer">
+      <span data-i18n="nav.install">免费安装</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="glow glow-a"></div><div class="glow glow-b"></div>
+    <div class="wrap hero-in">
+      <div class="hero-copy reveal">
+        <span class="kicker"><i></i><span data-i18n="hero.kicker">CHROME 扩展 · v2.4.6 · 完全免费</span></span>
+        <h1><span data-i18n="hero.h1a">让 X 回到</span><br><em data-i18n="hero.h1b">写作本身</em></h1>
+        <p class="lead" data-i18n="hero.lead">看清关注与互关、整理时间线、找到能写的题、一键出图。Xbar 把你本来就能看到的信息，整理成你真正用得上的样子。</p>
+        <div class="cta">
+          <a class="btn primary" href="https://chromewebstore.google.com/detail/fjhbelgmalhemlfjbkdpfnkgdfmhnbkb" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="hero.install">免费安装到 Chrome</span><span aria-hidden="true">→</span>
+          </a>
+          <a class="btn ghost" href="#features"><span data-i18n="hero.explore">看看它能做什么</span></a>
+        </div>
+        <div class="trust">
+          <span data-i18n="hero.t1">完全免费 · 无内购无广告</span>
+          <span data-i18n="hero.t2">数据默认只存本地</span>
+          <span data-i18n="hero.t3">中 / 英 / 日 / 韩</span>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="float-badge"><b>v2.4.6</b><span data-i18n="hero.badge">现已上架 Chrome 商店</span></div>
+        <div class="shot-frame">
+          <div class="shot-bar"><i></i><i></i><i></i><span>x.com · Xbar</span></div>
+          <img src="assets/shot-1.png" data-en-src="assets/shot-1-en.png" alt="Xbar 面板真实截图" loading="eager">
+        </div>
+        <p class="shot-cap" data-i18n="hero.cap">以上为产品真实界面截图</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACT STRIP -->
+  <section class="strip">
+    <div class="wrap strip-in">
+      <div><b>Manifest V3</b><span data-i18n="strip.s1">纯前端扩展</span></div>
+      <div><b>4</b><span data-i18n="strip.s2">种界面语言</span></div>
+      <div><b>¥0</b><span data-i18n="strip.s3">永久免费</span></div>
+      <div><b>Local-first</b><span data-i18n="strip.s4">数据默认在本机</span></div>
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section class="section" id="pain">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="pain.eyebrow">那些每天重复的小麻烦</span>
+        <h2 data-i18n="pain.h2">你不是不会玩 X，是工具没帮你省时间</h2>
+        <p data-i18n="pain.lead">翻互关翻到眼花，时间线里全是噪音，发完帖又不知道效果如何。Xbar 从这三个地方开始帮你。</p>
+      </div>
+      <div class="pain-grid">
+        <article class="paper reveal">
+          <div class="pico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.6-3 2.7-4.7 5.5-4.7 1.2 0 2.3.3 3.2.9"/><path d="M16 11h5M18.5 8.5v5"/></svg>
+          </div>
+          <h3 data-i18n="pain.p1h">互关到底是谁？</h3>
+          <p data-i18n="pain.p1d">关注列表几百上千人，来回对照粉丝列表找互关，既费眼又费时间。</p>
+        </article>
+        <article class="paper reveal">
+          <div class="pico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h16M6 11h12M8 16h8"/><path d="M17 4l2 2-2 2"/></svg>
+          </div>
+          <h3 data-i18n="pain.p2h">时间线太吵</h3>
+          <p data-i18n="pain.p2d">推荐的、推广的、不关心的关键词混在一起，真正想看的内容被埋掉。</p>
+        </article>
+        <article class="paper reveal">
+          <div class="pico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 2 4-6"/></svg>
+          </div>
+          <h3 data-i18n="pain.p3h">写完就结束了？</h3>
+          <p data-i18n="pain.p3d">不知道今天写了多少字、涨了几个粉丝，也没一张能顺手发出去的图。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="section alt" id="how">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="how.eyebrow">三步开始</span>
+        <h2 data-i18n="how.h2">装上就能用，不需要说明书</h2>
+        <p data-i18n="how.lead">没有账号体系，也不用绑定任何东西。打开 X，图标就在那儿。</p>
+      </div>
+      <div class="steps">
+        <article class="step reveal"><span class="num">01</span><h3 data-i18n="how.s1h">安装扩展</h3><p data-i18n="how.s1d">从 Chrome 应用商店免费安装 Xbar，几秒就好。</p></article>
+        <article class="step reveal"><span class="num">02</span><h3 data-i18n="how.s2h">打开 x.com</h3><p data-i18n="how.s2d">打开或刷新 x.com 并登录；首次会自动读取一次你的账号数据。</p></article>
+        <article class="step reveal"><span class="num">03</span><h3 data-i18n="how.s3h">点一下图标</h3><p data-i18n="how.s3d">点击工具栏里的 Xbar 图标，面板就出现在你面前。</p></article>
+      </div>
+      <p class="fineprint reveal" data-i18n="how.note">不接管账号、不代发内容；面板顶部 logo 可随时一键启停。</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="features.eyebrow">功能一览</span>
+        <h2 data-i18n="features.h2">一个面板，五组能力</h2>
+        <p data-i18n="features.lead">按你真正要做的事分组：看清关系、安静刷时间线、找到题目、做出图、放心使用。</p>
+      </div>
+      <div class="tabs reveal" role="tablist" aria-label="功能分组">
+        <button class="tab active" role="tab" aria-selected="true" data-tab="0" type="button"><span data-i18n="tab.0">关注与粉丝</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="1" type="button"><span data-i18n="tab.1">时间线整理</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="2" type="button"><span data-i18n="tab.2">创作与分享</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="3" type="button"><span data-i18n="tab.3">数据与趣味</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="4" type="button"><span data-i18n="tab.4">体验与隐私</span></button>
+      </div>
+
+      <div class="panels">
+        <!-- 0 -->
+        <div class="panel active" role="tabpanel" data-panel="0">
+          <div class="panel-copy">
+            <span class="pnum">01 / FOLLOW</span>
+            <h3 data-i18n="f0.h">谁关注了你，一眼看清</h3>
+            <p data-i18n="f0.lead">互关、粉丝、未回关分开摆放，不用再来回对照列表。后台会自动同步，打开面板就能看到结果。</p>
+            <ul class="flist">
+              <li data-i18n="f0.1">互关 / 粉丝 / 未回关三类分栏，标签命名无歧义</li>
+              <li data-i18n="f0.2">今日关注与粉丝涨跌，基于每天 0 点真实快照；上升红、下降绿、无变化灰</li>
+              <li data-i18n="f0.3">新粉丝、最近取关与异常账号记录，按状态归档</li>
+              <li data-i18n="f0.4">悬停头像看资料卡，可直接关注或取关，自动避开面板边缘</li>
+              <li data-i18n="f0.5">列表搜索筛选、按蓝V过滤、导出 CSV、批量操作</li>
+              <li data-i18n="f0.6">蓝V三态：确认蓝V显示蓝色，明确非蓝V显示灰色，信息未知不显示</li>
+            </ul>
+          </div>
+          <div class="panel-visual">
+            <div class="visual-card"><img src="assets/shot-2.png" data-en-src="assets/shot-2-en.png" alt="Xbar 关注与粉丝面板真实截图" loading="lazy"></div>
+            <p class="visual-cap" data-i18n="cap.real">产品真实界面截图</p>
+          </div>
+        </div>
+        <!-- 1 -->
+        <div class="panel" role="tabpanel" data-panel="1" hidden>
+          <div class="panel-copy">
+            <span class="pnum">02 / FOCUS</span>
+            <h3 data-i18n="f1.h">把时间线安静下来</h3>
+            <p data-i18n="f1.lead">只留下你想看的内容。过滤规则在你自己的浏览器里执行，不改变 X 本身的数据。</p>
+            <ul class="flist">
+              <li data-i18n="f1.1">关键词静默过滤，支持通配符，不关心的主题自动折叠</li>
+              <li data-i18n="f1.2">X 官方标注的 Promoted 推广帖静默隐藏，不误杀普通内容</li>
+              <li data-i18n="f1.3">打开 X 自动切到 Following，跳过「为你推荐」</li>
+              <li data-i18n="f1.4">作者地区标注，来自 X「关于此账号」的公开资料</li>
+              <li data-i18n="f1.5">AI 倾向评分 1–100：本地启发式判断，仅供参考，默认关闭</li>
+            </ul>
+          </div>
+          <div class="panel-visual">
+            <div class="visual-card mock-timeline" aria-label="时间线过滤效果示意图">
+              <div class="mtop"><span class="dot blue"></span><b data-i18n="mock.following">Following</b><span class="muted" data-i18n="mock.clean">已清理</span></div>
+              <div class="tweet"><span class="av"></span><div><b class="ln w60"></b><i class="ln w90"></i><i class="ln w75"></i><span class="tag" data-i18n="mock.region">地区：日本</span><span class="tag amber" data-i18n="mock.ai">AI 倾向 62 · 仅供参考</span></div></div>
+              <div class="tweet"><span class="av"></span><div><b class="ln w45"></b><i class="ln w85"></i><i class="ln w55"></i></div></div>
+              <div class="folded" data-i18n="mock.folded">3 条含「关键词」的帖子已折叠 · 2 条 Promoted 已隐藏</div>
+            </div>
+            <p class="visual-cap" data-i18n="cap.demo">效果示意图（非真实截图）</p>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="panel" role="tabpanel" data-panel="2" hidden>
+          <div class="panel-copy">
+            <span class="pnum">03 / CREATE</span>
+            <h3 data-i18n="f2.h">从题目到图片，顺手完成</h3>
+            <p data-i18n="f2.lead">没灵感时给你题目，写完给你数据，想分享时给你一张干净好看的图。</p>
+            <ul class="flist">
+              <li data-i18n="f2.1">灵感热榜：全球与本地热词，中英双语，掷骰子随机抽一个能写的题</li>
+              <li data-i18n="f2.2">手打字数统计：粘贴、拖拽、语音输入都不计入，可分今日与终身累计</li>
+              <li data-i18n="f2.3">干净截图：去除界面元素导出 PNG，可选帖子二维码，翻译帖可输出双语排版</li>
+              <li data-i18n="f2.4">海报：极简白 / 午夜黑 / 纸张米 / 原图多款样式，可选二维码与水印</li>
+              <li data-i18n="f2.5">战绩图与累计图：一键生成数据卡，保存、复制或直接带去发帖框</li>
+            </ul>
+          </div>
+          <div class="panel-visual">
+            <div class="visual-card"><img src="assets/shot-1.png" data-en-src="assets/shot-1-en.png" alt="Xbar 创作与数据面板真实截图" loading="lazy"></div>
+            <p class="visual-cap" data-i18n="cap.real">产品真实界面截图</p>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="panel" role="tabpanel" data-panel="3" hidden>
+          <div class="panel-copy">
+            <span class="pnum">04 / INSIGHT</span>
+            <h3 data-i18n="f3.h">数据之外，还有点好玩的</h3>
+            <p data-i18n="f3.lead">把互动关系画成星系，把今日状态变成称号。娱乐归娱乐，口径都写清楚。</p>
+            <ul class="flist">
+              <li data-i18n="f3.1">互动星系图：真实头像径向分布，实线朝外＝我发起，橙色虚线朝内＝对方发起</li>
+              <li data-i18n="f3.2">今日称号每天 0 点重置，只评价当天数据</li>
+              <li data-i18n="f3.3">发帖体检：AI 特征分与常见风险提示，纯本地规则，不代表 X 的判定</li>
+              <li data-i18n="f3.4">限流自测：只检测你自己，全程在本机完成，结果仅供参考</li>
+              <li data-i18n="f3.5">账号估值与隐藏彩蛋：娱乐性展示，不构成交易建议或价格保证</li>
+              <li data-i18n="f3.6">通知中心：更新说明和一次性提示可随时回看</li>
+            </ul>
+          </div>
+          <div class="panel-visual">
+            <div class="visual-card galaxy" aria-label="互动星系示意图">
+              <svg viewBox="0 0 420 300" role="img">
+                <defs><radialGradient id="gg"><stop offset="0" stop-color="#1d9bf0" stop-opacity=".45"/><stop offset="1" stop-color="#1d9bf0" stop-opacity="0"/></radialGradient></defs>
+                <circle cx="210" cy="150" r="118" fill="url(#gg)"/>
+                <g fill="none" stroke="#3b82f6" stroke-opacity=".55"><path d="M210 150L110 88"/><path d="M210 150L300 96"/><path d="M210 150L312 196"/></g>
+                <g fill="none" stroke="#fb923c" stroke-opacity=".8" stroke-dasharray="5 5"><path d="M210 150L128 208"/><path d="M210 150L236 250"/></g>
+                <circle cx="210" cy="150" r="26" fill="#1d9bf0"/><circle cx="210" cy="150" r="34" fill="none" stroke="#7dd3fc" stroke-opacity=".6"/>
+                <g fill="#6b7a88"><circle cx="110" cy="88" r="13"/><circle cx="300" cy="96" r="11"/><circle cx="312" cy="196" r="12"/><circle cx="128" cy="208" r="14"/><circle cx="236" cy="250" r="10"/></g>
+                <circle cx="300" cy="96" r="11" fill="none" stroke="#1d9bf0" stroke-width="3"/>
+              </svg>
+              <div class="glegend"><span><i class="solid"></i><span data-i18n="gal.a">我发起</span></span><span><i class="dash"></i><span data-i18n="gal.b">对方发起</span></span><span><i class="blue"></i><span data-i18n="gal.c">蓝V</span></span></div>
+            </div>
+            <p class="visual-cap" data-i18n="cap.demo">效果示意图（非真实截图）</p>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="panel" role="tabpanel" data-panel="4" hidden>
+          <div class="panel-copy">
+            <span class="pnum">05 / PRIVACY</span>
+            <h3 data-i18n="f4.h">快，而且不越界</h3>
+            <p data-i18n="f4.lead">面板打开就显示上次数据，真实数值随后静默补齐。取数有闸门，尽量不打扰平台。</p>
+            <ul class="flist">
+              <li data-i18n="f4.1">缓存优先秒显，后台静默刷新；多路径并行取数＋请求闸门控制频率</li>
+              <li data-i18n="f4.2">数据默认全部保存在浏览器本地（chrome.storage）</li>
+              <li data-i18n="f4.3">不读取密码、Cookie 内容或私信；不登录、不代发内容</li>
+              <li data-i18n="f4.4">云端备份默认关闭，只有主动开启并保存恢复码才会启用，可随时关闭并删除</li>
+              <li data-i18n="f4.5">面板顶部 logo 一键启停，支持简体中文 / English / 日本語 / 한국어</li>
+            </ul>
+          </div>
+          <div class="panel-visual">
+            <div class="visual-card shield" aria-label="本地优先示意">
+              <svg viewBox="0 0 240 180" role="img">
+                <path d="M120 16L190 42v52c0 42-29 66-70 78-41-12-70-36-70-78V42z" fill="#0e2a46" stroke="#1d9bf0" stroke-width="2"/>
+                <rect x="98" y="82" width="44" height="38" rx="8" fill="none" stroke="#7dd3fc" stroke-width="3"/>
+                <path d="M108 82V70a12 12 0 0124 0v12" fill="none" stroke="#7dd3fc" stroke-width="3"/>
+                <circle cx="120" cy="100" r="4" fill="#7dd3fc"/>
+              </svg>
+              <div class="shield-lines"><span data-i18n="shield.1">本地存储</span><span data-i18n="shield.2">不代发</span><span data-i18n="shield.3">云备份可选</span></div>
+            </div>
+            <p class="visual-cap" data-i18n="cap.demo">效果示意图（非真实截图）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="section alt showcase">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="show.eyebrow">产品一览</span>
+        <h2 data-i18n="show.h2">面板打开，该看的都在眼前</h2>
+      </div>
+      <figure class="promo reveal">
+        <img src="assets/promo-1400x560.png" data-en-src="assets/promo-1400x560-en.png" alt="Xbar 功能宣传图" loading="lazy">
+        <figcaption data-i18n="cap.real">产品真实界面截图</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FEATURE GALLERY -->
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="gallery.eyebrow">v2.4.6 功能图鉴</span>
+        <h2 data-i18n="gallery.h2">每一项能力，都看得见</h2>
+        <p data-i18n="gallery.lead">下面用界面示意把当前版本的功能逐个摊开。示意图用于说明交互，产品真实截图在紧接着的画廊里。</p>
+      </div>
+      <div class="fg-grid">
+        <article class="fg reveal"><div class="mini mini-tabs"><span data-i18n="g0.a">互关 128</span><span data-i18n="g0.b">粉丝 2.4k</span><span data-i18n="g0.c">未回关 36</span></div><h3 data-i18n="g0.h">三类关系分栏</h3><p data-i18n="g0.d">互关、粉丝、未回关独立标签，不再来回对照两个列表。</p></article>
+        <article class="fg reveal"><div class="mini mini-delta"><span class="up">↑ 12</span><span class="down">↓ 3</span><span class="flat">— 0</span></div><h3 data-i18n="g1.h">今日真实涨跌</h3><p data-i18n="g1.d">基于每天 0 点快照：上升红、下降绿、无变化灰。</p></article>
+        <article class="fg reveal"><div class="mini mini-profile"><i></i><div><b>@su1841</b><span data-i18n="g2.a">互关 · 大蝦不是大俠</span></div><em data-i18n="g2.b">关注</em></div><h3 data-i18n="g2.h">悬停资料卡</h3><p data-i18n="g2.d">头像一停就出资料卡，可直接关注或取关。</p></article>
+        <article class="fg reveal"><div class="mini mini-fold"><span data-i18n="g3.a">正在关注的内容</span><span class="fold" data-i18n="g3.b">关键词已折叠 · 3 条</span><span class="promo" data-i18n="g3.c">Promoted 已隐藏 · 2 条</span></div><h3 data-i18n="g3.h">时间线静默过滤</h3><p data-i18n="g3.d">关键词折叠、广告隐藏，只留下你想看的内容。</p></article>
+        <article class="fg reveal"><div class="mini mini-tags"><span data-i18n="g4.a">地区：日本</span><span data-i18n="g4.b">AI 倾向 62 · 仅供参考</span><span data-i18n="g4.c">互关</span></div><h3 data-i18n="g4.h">地区与 AI 标注</h3><p data-i18n="g4.d">地区来自公开资料；AI 分数是本地启发式，默认关闭。</p></article>
+        <article class="fg reveal"><div class="mini mini-trend"><span data-i18n="g5.a">1 热点话题 A</span><span data-i18n="g5.b">2 热点话题 B</span><em data-i18n="g5.c">DICE</em></div><h3 data-i18n="g5.h">灵感热榜抽题</h3><p data-i18n="g5.d">全球与本地热词排序，掷骰子随机抽一个能写的题。</p></article>
+        <article class="fg reveal"><div class="mini mini-count"><b>1,284</b><span data-i18n="g6.a">今日手打 · 粘贴不计</span><i></i></div><h3 data-i18n="g6.h">手打字数统计</h3><p data-i18n="g6.d">只算你真正敲下的字，分今日与终身累计。</p></article>
+        <article class="fg reveal"><div class="mini mini-poster"><div class="p1" data-i18n="g7.a">极简白</div><div class="p2" data-i18n="g7.b">午夜黑</div><div class="p3" data-i18n="g7.c">纸张米</div></div><h3 data-i18n="g7.h">多款海报样式</h3><p data-i18n="g7.d">截图干净导出，海报可换配色、加二维码与水印。</p></article>
+        <article class="fg reveal"><div class="mini mini-stat"><div><b>26.4k</b><span data-i18n="g8.a">粉丝</span></div><div><b>128</b><span data-i18n="g8.b">互关</span></div><div><b>1,284</b><span data-i18n="g8.c">手打</span></div></div><h3 data-i18n="g8.h">一键战绩图</h3><p data-i18n="g8.d">今日数据做成卡片，保存、复制或直接带进发帖框。</p></article>
+        <article class="fg reveal"><div class="mini mini-galaxy"><svg viewBox="0 0 200 90" role="img"><circle cx="100" cy="45" r="7" fill="#1d9bf0"/><g fill="#6b7a88"><circle cx="55" cy="25" r="5"/><circle cx="150" cy="28" r="5"/><circle cx="142" cy="68" r="5"/><circle cx="58" cy="70" r="5"/></g><g stroke="#3b82f6" fill="none" stroke-opacity=".7"><path d="M100 45L55 25M100 45L150 28M100 45L142 68"/></g><path d="M100 45L58 70" stroke="#fb923c" stroke-opacity=".85" stroke-dasharray="4 4" fill="none"/></svg></div><h3 data-i18n="g9.h">互动星系图</h3><p data-i18n="g9.d">真实头像径向分布，实线与虚线区分谁先发起互动。</p></article>
+        <article class="fg reveal"><div class="mini mini-check"><span data-i18n="g10.a">AI 特征 32</span><span data-i18n="g10.b">无明显风险</span><span data-i18n="g10.c">本地规则</span></div><h3 data-i18n="g10.h">发帖体检</h3><p data-i18n="g10.d">本地检查机器味与常见风险，仅供参考，不代表 X 判定。</p></article>
+        <article class="fg reveal"><div class="mini mini-test"><span data-i18n="g11.a">搜索建议 ✓</span><span data-i18n="g11.b">精确搜索 ✓</span><span data-i18n="g11.c">幽灵屏蔽 ✓</span><span data-i18n="g11.d">回复降权 ✓</span></div><h3 data-i18n="g11.h">限流自测</h3><p data-i18n="g11.d2">只检测你自己，全程本机完成，结果仅供参考。</p></article>
+        <article class="fg reveal"><div class="mini mini-bell"><i></i><span data-i18n="g12.a">v2.4.6 更新说明</span><b>NEW</b></div><h3 data-i18n="g12.h">通知中心</h3><p data-i18n="g12.d">更新说明和一次性提示收进铃铛，随时回看。</p></article>
+        <article class="fg reveal"><div class="mini mini-cloud"><span data-i18n="g13.a">恢复码 XBAR-••••</span><span data-i18n="g13.b">AES-GCM 端到端加密</span></div><h3 data-i18n="g13.h">可选云备份</h3><p data-i18n="g13.d">默认关闭；开启需自备 Supabase 并保存恢复码。</p></article>
+        <article class="fg reveal"><div class="mini mini-lang"><span>简中</span><span>EN</span><span>日本語</span><span>한국어</span></div><h3 data-i18n="g14.h">四种界面语言</h3><p data-i18n="g14.d">默认跟随浏览器，也可在面板内随时切换。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- REAL SHOTS -->
+  <section class="section alt" id="realshots">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="shots.eyebrow">界面实拍</span>
+        <h2 data-i18n="shots.h2">不是示意图，是 Xbar 本来的样子</h2>
+        <p data-i18n="shots.lead">点击任意一张看大图。中英文界面截图都来自产品本身。</p>
+      </div>
+      <div class="shot-gallery reveal">
+        <button class="thumb" type="button" data-full="assets/shot-1.png"><img src="assets/shot-1.png" alt="Xbar 面板中文截图" loading="lazy"><span data-i18n="shot.zh1">面板总览 · 中文</span></button>
+        <button class="thumb" type="button" data-full="assets/shot-2.png"><img src="assets/shot-2.png" alt="Xbar 关注与粉丝中文截图" loading="lazy"><span data-i18n="shot.zh2">关注与粉丝 · 中文</span></button>
+        <button class="thumb" type="button" data-full="assets/shot-1-en.png"><img src="assets/shot-1-en.png" alt="Xbar panel screenshot in English" loading="lazy"><span data-i18n="shot.en1">Panel overview · English</span></button>
+        <button class="thumb" type="button" data-full="assets/shot-2-en.png"><img src="assets/shot-2-en.png" alt="Xbar followers screenshot in English" loading="lazy"><span data-i18n="shot.en2">Followers & mutuals · English</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="section" id="privacy">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="priv.eyebrow">隐私与权限</span>
+        <h2 data-i18n="priv.h2">本地优先，边界写清楚</h2>
+        <p data-i18n="priv.lead">Xbar 没有账号系统、没有广告、没有统计埋点，也不出售任何数据。下面是它实际会碰到的东西。</p>
+      </div>
+      <div class="priv-grid">
+        <article class="paper reveal"><div class="pico">▣</div><h3 data-i18n="priv.c1h">默认只存本地</h3><p data-i18n="priv.c1d">设置、关注/粉丝快照、字数统计默认保存在 chrome.storage。云端备份需你主动开启，并提供自己的 Supabase 配置与恢复码。</p></article>
+        <article class="paper reveal"><div class="pico">↗</div><h3 data-i18n="priv.c2h">不替你操作账号</h3><p data-i18n="priv.c2d">不读取密码、Cookie 内容或私信；不代你登录、不代你发帖。关注/取关只在面板里由你点击触发。</p></article>
+        <article class="paper reveal"><div class="pico">◎</div><h3 data-i18n="priv.c3h">权限逐条说明</h3><p data-i18n="priv.c3d">只申请实现功能所必需的权限，没有远程代码，不执行远端脚本。</p></article>
+      </div>
+      <div class="perm reveal">
+        <h3 data-i18n="perm.h">权限用在哪里</h3>
+        <div class="perm-grid">
+          <div><code>storage</code><p data-i18n="perm.1">本地保存设置、快照与统计，不上传服务器。</p></div>
+          <div><code>alarms</code><p data-i18n="perm.2">每 20 分钟后台静默刷新关注/粉丝数。</p></div>
+          <div><code>tabs</code><p data-i18n="perm.3">找到已打开的 X 页面来同步数据。</p></div>
+          <div><code>downloads</code><p data-i18n="perm.4">你点保存时把生成的 PNG 存到本地。</p></div>
+          <div><code>cookies</code><p data-i18n="perm.5">请求时沿用浏览器现有登录态；不读取或保存 Cookie 内容。</p></div>
+          <div><code>contextMenus</code><p data-i18n="perm.6">右键菜单提供启用 / 停用开关。</p></div>
+          <div><code>scripting</code><p data-i18n="perm.7">在你打开的 X 页面上注入并更新面板元素。</p></div>
+          <div><code>x.com / twitter.com</code><p data-i18n="perm.8">读取你当前可见的公开资料与列表；不读取私信。</p></div>
+        </div>
+        <a class="textlink" href="https://daxia91.github.io/Xbar/" target="_blank" rel="noopener noreferrer"><span data-i18n="priv.more">阅读完整隐私政策</span> →</a>
+      </div>
+      <p class="fineprint reveal" data-i18n="priv.delta">涨跌口径：基于每天 0 点的真实快照；其他用户主页的涨跌基准为当日首次打开该主页时的数值，不代表全天真实涨幅。</p>
+    </div>
+  </section>
+
+  <!-- CHANGELOG -->
+  <section class="section alt" id="changelog">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="log.eyebrow">更新日志</span>
+        <h2 data-i18n="log.h2">最近做了什么</h2>
+        <p data-i18n="log.lead">只列出有明确记录的版本。当前版本 v2.4.6。</p>
+        <p class="live-pill"><span data-i18n="log.live">仍在持续迭代 · 后续更新会同步到本页</span></p>
+      </div>
+      <div class="timeline">
+        <article class="log reveal"><span class="ver">v2.4.6</span><div><p data-i18n="log.6a">通知只显示在顶部铃铛里：点铃铛才展开，不再自动弹出或占用面板位置。</p><p data-i18n="log.6b">头像上方的粉丝/关注进度条渐变重新调校，未完成段保留淡色光谱。</p></div></article>
+        <article class="log reveal"><span class="ver">v2.4.5</span><div><p data-i18n="log.5a">同步状态与结果统一收进铃铛，面板正文更清爽；每条通知带日期，未读显示 NEW。</p><p data-i18n="log.5b">新安装后会给已打开的 x.com 页面自动补注入并开始同步。</p></div></article>
+        <article class="log reveal"><span class="ver">v2.4.4</span><div><p data-i18n="log.4a">首次打开的功能说明统一收进铃铛，随时可回看。</p><p data-i18n="log.4b">进度条换成更清晰的渐变色，不同进度对应不同颜色区间。</p></div></article>
+        <article class="log reveal"><span class="ver">v2.4.3</span><div><p data-i18n="log.3a">通知面板改为顶部浮层，展开时不再挤压正文；铃铛显示未读数量。</p></div></article>
+        <article class="log reveal"><span class="ver">v2.4.2</span><div><p data-i18n="log.2a">新增通知中心：更新说明和一次性提示都能在这里回看。</p><p data-i18n="log.2b">限流自测在未登录时不再锁 90 秒，遇到 429 会提前停止并进入冷却。</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap faq-wrap">
+      <div class="head reveal">
+        <span class="eyebrow" data-i18n="faq.eyebrow">常见问题</span>
+        <h2 data-i18n="faq.h2">你可能还想知道</h2>
+      </div>
+      <div class="faq reveal">
+        <details><summary data-i18n="faq.q1">Xbar 收费吗？</summary><p data-i18n="faq.a1">完全免费，无内购、无广告，也没有付费墙。</p></details>
+        <details><summary data-i18n="faq.q2">它会替我发推或关注别人吗？</summary><p data-i18n="faq.a2">不会。Xbar 不接管账号、不代发内容；关注或取关都需要你自己在面板里点击。</p></details>
+        <details><summary data-i18n="faq.q3">我的数据存在哪里？</summary><p data-i18n="faq.a3">默认只存在浏览器本地。云备份默认关闭，只有你主动开启并保存恢复码才会启用，随时可以关闭并删除。</p></details>
+        <details><summary data-i18n="faq.q4">为什么有些标注没有显示？</summary><p data-i18n="faq.a4">蓝V采用三态：确认是蓝V显示蓝色，明确不是显示灰色，信息不足时不显示。AI 倾向评分是本地启发式判断，仅供参考且默认关闭。</p></details>
+        <details><summary data-i18n="faq.q5">支持哪些浏览器和语言？</summary><p data-i18n="faq.a5">支持 Chrome 及 Chromium 内核浏览器，Manifest V3。界面支持简体中文、English、日本語、한국어，默认跟随浏览器语言。</p></details>
+        <details><summary data-i18n="faq.q6">初次使用要等多久？</summary><p data-i18n="faq.a6">首次大约需要几秒读取账号；面板会先显示上次数据，真实数值随后静默补齐。若一直没反应，请先打开 x.com 再试。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final" id="install">
+    <div class="glow glow-c"></div>
+    <div class="wrap final-in reveal">
+      <div>
+        <span class="eyebrow" data-i18n="end.eyebrow">准备好了吗</span>
+        <h2 data-i18n="end.h2">把 Xbar 装进浏览器，<br>下次打开 X 就不一样</h2>
+        <p data-i18n="end.lead">免费安装，无需注册。安装后打开 x.com，点工具栏里的图标即可开始。</p>
+        <div class="cta">
+          <a class="btn primary" href="https://chromewebstore.google.com/detail/fjhbelgmalhemlfjbkdpfnkgdfmhnbkb" target="_blank" rel="noopener noreferrer"><span data-i18n="end.install">前往 Chrome 应用商店安装</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="qrbox">
+        <img src="assets/store-qr.svg" alt="Chrome 商店页面二维码" width="132" height="132">
+        <span data-i18n="end.qr">手机扫码也可打开商店页面</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Screenshot preview">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close preview">×</button>
+  <img id="lbImg" src="" alt="">
+  <p id="lbCap"></p>
+</div>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="fbrand"><img src="assets/icon-128.png" alt="" width="26" height="26"><b>Xbar</b><span data-i18n="foot.tag">X 网页端创作助手</span></div>
+    <div class="flinks">
+      <a href="https://chromewebstore.google.com/detail/fjhbelgmalhemlfjbkdpfnkgdfmhnbkb" target="_blank" rel="noopener noreferrer" data-i18n="foot.store">Chrome 应用商店</a>
+      <a href="https://daxia91.github.io/Xbar/" target="_blank" rel="noopener noreferrer" data-i18n="foot.privacy">隐私政策</a>
+      <a href="mailto:jasonyang88713@gmail.com">jasonyang88713@gmail.com</a>
+      <a href="https://x.com/su1841" target="_blank" rel="noopener noreferrer">X @su1841</a>
+    </div>
+    <p class="disclaimer"><span data-i18n="foot.author">作者：大蝦不是大俠</span> · <span data-i18n="foot.disclaimer">Xbar 与 X Corp. 无关联，所有商标归其各自所有者所有。</span></p>
+  </div>
+</footer>
+</body>
+</html>
