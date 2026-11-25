@@ -49,7 +49,7 @@ h1 em{font-style:normal;background:linear-gradient(100deg,#8fd0ff,#1d9bf0);-webk
 .hero-visual{position:relative;padding:18px 0 0}
 .float-badge{position:absolute;right:18px;top:-12px;z-index:3;background:rgba(9,24,42,.9);border:1px solid rgba(125,195,255,.3);backdrop-filter:blur(10px);border-radius:11px;padding:8px 14px;font-size:11px;color:#a9c8e6;box-shadow:0 12px 30px rgba(0,0,0,.35)}
 .float-badge b{display:block;color:#fff;font-size:14px;line-height:1.3}
-.shot-frame{transform:rotate(-1.3deg);border:1px solid rgba(169,207,255,.2);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.06);padding:8px;box-shadow:0 42px 84px rgba(0,0,0,.5),0 0 70px rgba(29,155,240,.16)}
+.shot-frame{transform:none;border:1px solid rgba(169,207,255,.2);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.06);padding:8px;box-shadow:0 42px 84px rgba(0,0,0,.5),0 0 70px rgba(29,155,240,.16)}
 .shot-bar{display:flex;align-items:center;gap:6px;padding:6px 8px 10px;font-size:11px;color:#7f9ab5}
 .shot-bar i{width:9px;height:9px;border-radius:50%;background:#334b64}
 .shot-bar span{margin-left:10px}
